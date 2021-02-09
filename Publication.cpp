@@ -21,3 +21,13 @@ void Book::getData(void){
 std::string Book::putData(void){
     return Publication::putData() + "Number of pages: " + std::to_string(page_counter) + '\n';
 }
+
+void Tape::getData(void){
+    Publication::getData();
+    std::cout << "Enter the playing time(minutes): ";
+    std::cin >> playing_time;
+}
+
+std::string Tape::putData(void){
+    return Publication::putData() + "Playing Time (min): " + std::to_string(playing_time) + '\n';
+}

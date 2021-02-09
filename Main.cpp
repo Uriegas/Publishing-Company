@@ -8,5 +8,9 @@ int main(void){
     Book harrypopote = Book();
     harrypopote.getData();
     std::cout << harrypopote.putData();
+
+    Tape elchavo = Tape();
+    elchavo.getData();
+    std::cout << elchavo.putData();
     return 0;
 }
