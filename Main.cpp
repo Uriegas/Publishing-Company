@@ -1,7 +1,6 @@
 #include "Publication.hpp"
 
 int main(void){
-    /*
     Publication mipublicacion = Publication();
     mipublicacion.getData();
     std::cout << mipublicacion.putData();
@@ -13,7 +12,7 @@ int main(void){
     Tape elchavo = Tape();
     elchavo.getData();
     std::cout << elchavo.putData();
-*/
+
     Sales venta = Sales();
     venta.getData();
     std::cout << venta.putData();

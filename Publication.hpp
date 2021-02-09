@@ -17,7 +17,7 @@ class Sales{
         std::string putData(void);
 };
 
-class Book: Publication{
+class Book: Publication, Sales{
     private:
         int page_counter;
     public:
@@ -25,7 +25,7 @@ class Book: Publication{
         std::string putData(void);
 };
 
-class Tape:Publication{
+class Tape:Publication, Sales{
     private:
         float playing_time;
     public:
