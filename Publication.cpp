@@ -2,6 +2,7 @@
 
 void Publication::getData(void){
     std::cout << "Enter the publication title: ";
+    std::cin >> std::ws;
     std::getline(std::cin, title);
     std::cout << "Enter the price: ";
     std::cin >> price;
