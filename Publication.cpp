@@ -31,3 +31,17 @@ void Tape::getData(void){
 std::string Tape::putData(void){
     return Publication::putData() + "Playing Time (min): " + std::to_string(playing_time) + '\n';
 }
+
+void Sales::getData(void){
+    for(int i = 0; i < 3; i++){
+        std::cout << "Enter " + std::to_string(i+1) + " month sales amount: ";
+        std::cin >> sales_3months[i];
+    }
+}
+
+std::string Sales::putData(void){
+    std::string out;
+    for(int i = 0; i < 3; i++)
+        out += "Sales in month " + std::to_string(i+1) + " are: " + std::to_string(sales_3months[i]) + '\n';
+    return out;
+}

@@ -9,6 +9,14 @@ class Publication{
         std::string putData(void);
 };
 
+class Sales{
+    private:
+        float sales_3months [3];
+    public:
+        void getData(void);
+        std::string putData(void);
+};
+
 class Book: Publication{
     private:
         int page_counter;
