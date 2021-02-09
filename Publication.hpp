@@ -14,7 +14,7 @@ class Book: Publication{
         int page_counter;
     public:
         void getData(void);
-        void putData(void);
+        std::string putData(void);
 };
 
 class Tape:Publication{
@@ -22,5 +22,5 @@ class Tape:Publication{
         float playing_time;
     public:
         void getData(void);
-        void putData(void);
+        std::string putData(void);
 };
