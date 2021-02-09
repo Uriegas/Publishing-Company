@@ -47,3 +47,19 @@ void Tape::getData(void){
 std::string Tape::putData(void){
     return Publication::putData() + Sales::putData() + "Playing Time (min): " + std::to_string(playing_time) + '\n';
 }
+
+void Disk::getData(void){
+    char buff;
+    Publication::getData();
+    Sales::getData();
+    do{
+        std::cout << "Enter the disk type (d = dvd, c = cd):";
+        std::cin >> buff;
+    }
+    while(!(buff == 'c' || buff == 'd'));
+    type = (disk_type)buff;
+}
+
+std::string Disk::putData(void){
+    return Publication::putData() + Sales::putData() + "Disk Type: " + (type == CD ? "CD" : "DVD") + '\n';
+}

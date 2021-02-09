@@ -1,4 +1,5 @@
 #include <iostream>
+enum disk_type{CD = 'c', DVD = 'd'};
 
 class Publication{
     private:
@@ -28,6 +29,14 @@ class Book: Publication, Sales{
 class Tape:Publication, Sales{
     private:
         float playing_time;
+    public:
+        void getData(void);
+        std::string putData(void);
+};
+
+class Disk: Publication, Sales{
+    private:
+        disk_type type;
     public:
         void getData(void);
         std::string putData(void);
