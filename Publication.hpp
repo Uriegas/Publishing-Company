@@ -12,7 +12,8 @@ class Publication{
 
 class Sales{
     private:
-        float sales_3months [3];
+        //Quantity of items sold in a year
+        int sales_amount[12];
     public:
         void getData(void);
         std::string putData(void);
@@ -40,4 +41,11 @@ class Disk: Publication, Sales{
     public:
         void getData(void);
         std::string putData(void);
+};
+
+class Interface: Book, Tape, Disk{
+    private:
+        int selection;
+    public:
+        void menu();
 };

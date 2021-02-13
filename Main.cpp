@@ -17,10 +17,12 @@ int main(void){
     Sales venta = Sales();
     venta.getData();
     std::cout << venta.putData();
-*/
     Disk narnia = Disk();
     narnia.getData();
     std::cout << narnia.putData();
 
+*/
+    Interface CLI;
+    CLI.menu();
     return 0;
 }

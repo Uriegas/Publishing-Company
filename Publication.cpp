@@ -13,16 +13,16 @@ std::string Publication::putData(void){
 }
 
 void Sales::getData(void){
-    for(int i = 0; i < 3; i++){
-        std::cout << "Enter " + std::to_string(i+1) + " month sales amount: ";
-        std::cin >> sales_3months[i];
+    for(int i = 0; i < 12; i++){
+        std::cout << "Enter " + std::to_string(i+1) + " month sales amount (quantity): ";
+        std::cin >> sales_amount[i];
     }
 }
 
 std::string Sales::putData(void){
     std::string out;
-    for(int i = 0; i < 3; i++)
-        out += "Sales in month " + std::to_string(i+1) + " are: " + std::to_string(sales_3months[i]) + '\n';
+    for(int i = 0; i < 12; i++)
+        out += "Sales in month " + std::to_string(i+1) + " are: " + std::to_string(sales_amount[i]) + '\n';
     return out;
 }
 
@@ -62,4 +62,29 @@ void Disk::getData(void){
 
 std::string Disk::putData(void){
     return Publication::putData() + Sales::putData() + "Disk Type: " + (type == CD ? "CD" : "DVD") + '\n';
+}
+
+void Interface::menu(){
+    std::cout << "This a publications sales store (books, tapes and disks)";
+
+    while (true){
+        std::string buffer;
+        std::cout << "1. " << "Add publication" << '\n'
+                  << "2. " << "Add book" << '\n'
+                  << "3. " << "Add Tape" << '\n'
+                  << "4. " << "Add Disk" << '\n'
+                  << "5. " << "Quit" << std::endl;
+
+        std::getline(std::cin, buffer);
+        std::stringstream(buffer) >> selection;
+
+        switch (selection){
+        case 1:
+            break;
+        
+        default:
+            break;
+        }
+    }
+    
 }
