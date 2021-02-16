@@ -94,12 +94,12 @@ void Interface::viewAll(){
 }
 
 void Interface::getAnnualSales(){
-    for( Sales x : books)
-        gross_total_sales[0] += x.getAnnualSales();
-    for( Sales x : tapes)
-        gross_total_sales[1] += x.getAnnualSales();
-    for( Sales x : disks)
-        gross_total_sales[2] += x.getAnnualSales();
+    for( Book x : books)
+        gross_total_sales[0] += ( x.getAnnualSales() * x.getPrice() );
+    for( Tape x : tapes)
+        gross_total_sales[1] += ( x.getAnnualSales() * x.getPrice() );
+    for( Disk x : disks)
+        gross_total_sales[2] += ( x.getAnnualSales() * x.getPrice() );
 }
 
 void Interface::salesMenu(){
@@ -160,36 +160,34 @@ void Interface::menu(){
         std::stringstream(buffer) >> selection;
 
         switch (selection){
-        case 1:{
-            Book tmp;
-            tmp.getData();
-            books.push_back(tmp);
-            break;
-        }
-        case 2:{
-            Tape tmp;
-            tmp.getData();
-            tapes.push_back(tmp);
-            break;
-        }
-        case 3:{
-            Disk tmp;
-            tmp.getData();
-            disks.push_back(tmp);
-            break;
-        }
-        case 4:{
-            viewAll();
-            break;
-        }
-        case 5:{
-            salesMenu();
-            break;
-        }
-        case 6:
-            return;
-        default:
-            break;
+            case 1:{
+                Book tmp;
+                tmp.getData();
+                books.push_back(tmp);
+                break;
+            }
+            case 2:{
+                Tape tmp;
+                tmp.getData();
+                tapes.push_back(tmp);
+                break;
+            }
+            case 3:{
+                Disk tmp;
+                tmp.getData();
+                disks.push_back(tmp);
+                break;
+            }
+            case 4:
+                viewAll();
+                break;
+            case 5:
+                salesMenu();
+                break;
+            case 6:
+                return;
+            default:
+                break;
         }
     }
     

@@ -11,6 +11,7 @@ class Publication{
     public:
         virtual void getData(void);
         virtual std::string putData(void);
+        float getPrice(){return price;}
 };
 
 class Sales{
@@ -21,9 +22,9 @@ class Sales{
         void ComputeSales();
     public:
         Sales(): total_sales(0){};
-        virtual float getAnnualSales();
-        virtual void getData(void);
-        virtual std::string putData(void);
+        float getAnnualSales();
+        void getData(void);
+        std::string putData(void);
 };
 
 class Book: public Publication, public Sales{
@@ -63,5 +64,6 @@ class Interface{
         void salesMenu();
         void getAnnualSales();
     public:
+        Interface(): gross_total_sales{0,0,0}{};
         void menu();
 };
