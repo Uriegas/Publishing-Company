@@ -72,19 +72,22 @@ std::string Disk::putData(void){
 }
 
 void Interface::viewAll(){
-    for(Book x : books)
-        std::cout << x.putData();
-    for(Tape x : tapes)
-        std::cout << x.putData();
-    for(Disk x : disks)
-        std::cout << x.putData();
+    if(!books.empty())
+        for(Book x : books)
+            std::cout << x.putData();
+    if(!tapes.empty())
+        for(Tape x : tapes)
+            std::cout << x.putData();
+    if(!disks.empty())
+        for(Disk x : disks)
+            std::cout << x.putData();
 }
 
 void Interface::salesMenu(){
     while(true){
-        std::cout << "1. " << "Anual Books Sales" << '\n'
-                  << "2. " << "Anual Tapes Sales" << '\n'
-                  << "3. " << "Anual Disks Sales" << '\n'
+        std::cout << "1. " << "Anual Book Sales" << '\n'
+                  << "2. " << "Anual Tape Sales" << '\n'
+                  << "3. " << "Anual Disk Sales" << '\n'
                   << "4. " << "Quit" << '\n';
         std::cin.ignore();
         std::getline(std::cin, buffer);
@@ -96,18 +99,21 @@ void Interface::salesMenu(){
             float sales = 0;
             for( Sales x : books)
                 sales += x.getAnnualSales();
+            std::cout << "Anual Book Sales are: " << sales << '\n';
             break;
         }
         case 2:{
             float sales = 0;
             for( Sales x : tapes)
                 sales += x.getAnnualSales();
+            std::cout << "Anual Tape Sales are: " << sales << '\n';
             break;
         }
         case 3:{
             float sales = 0;
             for( Sales x : disks)
                 sales += x.getAnnualSales();
+            std::cout << "Anual Disks Sales are: " << sales << '\n';
             break;
         }
         case 4:
