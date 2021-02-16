@@ -26,6 +26,13 @@ std::string Sales::putData(void){
     return out;
 }
 
+float Sales::getAnnualSales(){
+    float tmp = 0;
+    for(auto x : sales_amount)
+        tmp += x;
+    return tmp;
+}
+
 void Book::getData(void){
     Publication::getData();
     Sales::getData();
@@ -71,7 +78,45 @@ void Interface::viewAll(){
         std::cout << x.putData();
     for(Disk x : disks)
         std::cout << x.putData();
-};
+}
+
+void Interface::salesMenu(){
+    while(true){
+        std::cout << "1. " << "Anual Books Sales" << '\n'
+                  << "2. " << "Anual Tapes Sales" << '\n'
+                  << "3. " << "Anual Disks Sales" << '\n'
+                  << "4. " << "Quit" << '\n';
+        std::cin.ignore();
+        std::getline(std::cin, buffer);
+        std::stringstream(buffer) >> selection;
+        std::cout << selection;
+
+        switch (selection){
+        case 1:{
+            float sales = 0;
+            for( Sales x : books)
+                sales += x.getAnnualSales();
+            break;
+        }
+        case 2:{
+            float sales = 0;
+            for( Sales x : tapes)
+                sales += x.getAnnualSales();
+            break;
+        }
+        case 3:{
+            float sales = 0;
+            for( Sales x : disks)
+                sales += x.getAnnualSales();
+            break;
+        }
+        case 4:
+            return;
+        default:
+            break;
+        }
+    }
+}
 
 void Interface::menu(){
     std::cout << "This a publications sales store (books, tapes and disks)\n";
@@ -112,6 +157,7 @@ void Interface::menu(){
             break;
         }
         case 5:{
+            salesMenu();
             break;
         }
         case 6:

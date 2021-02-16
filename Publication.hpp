@@ -18,6 +18,7 @@ class Sales{
         //Quantity of items sold in a year
         int sales_amount[12];
     public:
+        float getAnnualSales();
         virtual void getData(void);
         virtual std::string putData(void);
 };
@@ -55,6 +56,7 @@ class Interface{
         std::vector<Tape> tapes;
         std::vector<Disk> disks;
         void viewAll();
+        void salesMenu();
     public:
         void menu();
 };
