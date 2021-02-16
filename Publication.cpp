@@ -3,12 +3,10 @@
 void Publication::getData(void){
     std::string tmp;
     std::cout << "Enter the publication title: ";
-//    std::cin >> std::ws;
     std::getline(std::cin, title);
     std::cout << "Enter the price: ";
     std::getline(std::cin, tmp);
     std::stringstream(tmp) >> price;
-//    std::cin >> price;
 }
 
 std::string Publication::putData(void){
@@ -21,7 +19,6 @@ void Sales::getData(void){
         std::cout << "Enter " + std::to_string(i+1) + " month sales amount (quantity): ";
         std::getline(std::cin, tmp);
         std::stringstream(tmp) >> sales_amount[i];
-//        std::cin >> sales_amount[i];
     }
 }
 
@@ -46,7 +43,6 @@ void Book::getData(void){
     std::cout << "Enter number of pages: ";
     std::getline(std::cin, tmp);
     std::stringstream(tmp) >> page_counter;
-//    std::cin >> page_counter;
 }
 
 std::string Book::putData(void){
@@ -59,7 +55,6 @@ void Tape::getData(void){
     Sales::getData();
     std::cout << "Enter the playing time(minutes): ";
     std::stringstream(tmp) >> playing_time;
-//    std::cin >> playing_time;
 }
 
 std::string Tape::putData(void){
@@ -67,14 +62,12 @@ std::string Tape::putData(void){
 }
 
 void Disk::getData(void){
-//    char buff;
     std::string buff;
     Publication::getData();
     Sales::getData();
     do{
         std::cout << "Enter the disk type (d = dvd, c = cd):";
         std::getline(std::cin, buff);
-//        std::cin >> buff;
     }
     while(!(buff == "c" || buff == "d"));
     type = (disk_type)buff[1];
