@@ -1,6 +1,4 @@
 #include "Publication.hpp"
-#include <iostream>
-#include <sstream>
 
 void Publication::getData(void){
     std::cout << "Enter the publication title: ";
@@ -67,10 +65,9 @@ std::string Disk::putData(void){
 }
 
 void Interface::menu(){
-    std::cout << "This a publications sales store (books, tapes and disks)";
+    std::cout << "This a publications sales store (books, tapes and disks)\n";
 
     while (true){
-        std::string buffer;
         std::cout << "1. " << "Add publication" << '\n'
                   << "2. " << "Add book" << '\n'
                   << "3. " << "Add Tape" << '\n'
@@ -81,9 +78,16 @@ void Interface::menu(){
         std::stringstream(buffer) >> selection;
 
         switch (selection){
-        case 1:
+        case 1:{
+            Publication pb;
+            pb.getData();
             break;
-        
+        }
+        case 2:{
+
+        }
+        case 5:
+            return;
         default:
             break;
         }

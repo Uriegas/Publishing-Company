@@ -1,4 +1,7 @@
 #include <iostream>
+#include <sstream>
+#include <vector>
+
 enum disk_type{CD = 'c', DVD = 'd'};
 
 class Publication{
@@ -43,9 +46,14 @@ class Disk: public Publication, public Sales{
         std::string putData(void)override;
 };
 
-class Interface: private Book, private Tape, private Disk{
+class Interface{
     private:
+        std::string buffer;
         int selection;
+        std::vector<Publication> publications;
+        std::vector<Book> books;
+        std::vector<Tape> tapes;
+        std::vector<Disk> disks;
     public:
         void menu();
 };
