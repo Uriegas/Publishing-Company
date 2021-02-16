@@ -16,9 +16,11 @@ class Publication{
 class Sales{
     private:
         //Quantity of items sold in a year
-        int sales_amount[12];
+        float sales_amount[12];
+        float total_sales;
+        void ComputeSales();
     public:
-        float getAnnualSales();
+        virtual float getAnnualSales();
         virtual void getData(void);
         virtual std::string putData(void);
 };
@@ -55,8 +57,10 @@ class Interface{
         std::vector<Book> books;
         std::vector<Tape> tapes;
         std::vector<Disk> disks;
+        std::vector<int> gross_total_sales;
         void viewAll();
         void salesMenu();
+        void getAnnualSales();
     public:
         void menu();
 };

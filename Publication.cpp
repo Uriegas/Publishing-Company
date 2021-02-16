@@ -13,6 +13,15 @@ std::string Publication::putData(void){
     return "Title: " + title + '\n' + "Price: " + std::to_string(price) + '\n';
 }
 
+void Sales::ComputeSales(){
+    for(auto x : sales_amount)
+        total_sales += x;
+}
+
+float Sales::getAnnualSales(){
+    return total_sales;
+}
+
 void Sales::getData(void){
     std::string tmp;
     for(int i = 0; i < 12; i++){
@@ -20,6 +29,7 @@ void Sales::getData(void){
         std::getline(std::cin, tmp);
         std::stringstream(tmp) >> sales_amount[i];
     }
+    ComputeSales();//Calculate annual sales after getting data
 }
 
 std::string Sales::putData(void){
@@ -27,13 +37,6 @@ std::string Sales::putData(void){
     for(int i = 0; i < 12; i++)
         out += "Sales in month " + std::to_string(i+1) + " are: " + std::to_string(sales_amount[i]) + '\n';
     return out;
-}
-
-float Sales::getAnnualSales(){
-    float tmp = 0;
-    for(auto x : sales_amount)
-        tmp += x;
-    return tmp;
 }
 
 void Book::getData(void){
@@ -89,7 +92,17 @@ void Interface::viewAll(){
             std::cout << x.putData();
 }
 
+void Interface::getAnnualSales(){
+    for( Sales x : books)
+        gross_total_sales[0] += x.getAnnualSales();
+    for( Sales x : tapes)
+        gross_total_sales[1] += x.getAnnualSales();
+    for( Sales x : disks)
+        gross_total_sales[2] += x.getAnnualSales();
+}
+
 void Interface::salesMenu(){
+    getAnnualSales();
     while(true){
         std::cout << "-------Anual Sales-------"
                   << "1. " << "Anual Book Sales" << '\n'
@@ -102,34 +115,32 @@ void Interface::salesMenu(){
         std::stringstream(buffer) >> selection;
 
         switch (selection){
-        case 1:{
-            float sales = 0;
-            for( Sales x : books)
-                sales += x.getAnnualSales();
-            std::cout << "Anual Book Sales are: " << sales << '\n';
-            break;
-        }
-        case 2:{
-            float sales = 0;
-            for( Sales x : tapes)
-                sales += x.getAnnualSales();
-            std::cout << "Anual Tape Sales are: " << sales << '\n';
-            break;
-        }
-        case 3:{
-            float sales = 0;
-            for( Sales x : disks)
-                sales += x.getAnnualSales();
-            std::cout << "Anual Disks Sales are: " << sales << '\n';
-            break;
-        }
-        case 4:{
-            break;//Not implemented
-        }
-        case 5:
-            return;
-        default:
-            break;
+            case 1:{
+                std::cout << "Anual Book Sales are: " << gross_total_sales[0] << '\n';
+                break;
+            }
+            case 2:{
+                float sales = 0;
+                for( Sales x : tapes)
+                    sales += x.getAnnualSales();
+                std::cout << "Anual Tape Sales are: " << gross_total_sales[1] << '\n';
+                break;
+            }
+            case 3:{
+                std::cout << "Anual Disks Sales are: " << gross_total_sales[2] << '\n';
+                break;
+            }
+            case 4:{
+                float total;
+                for( auto x : gross_total_sales )
+                    total += x;
+                std::cout << "Total Store Sales: " << total << '\n';
+                break;
+            }
+            case 5:
+                return;
+            default:
+                break;
         }
     }
 }
