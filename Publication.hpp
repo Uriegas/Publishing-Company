@@ -6,8 +6,8 @@ class Publication{
         std::string title;
         float price;
     public:
-        void getData(void);
-        std::string putData(void);
+        virtual void getData(void);
+        virtual std::string putData(void);
 };
 
 class Sales{
@@ -15,35 +15,35 @@ class Sales{
         //Quantity of items sold in a year
         int sales_amount[12];
     public:
-        void getData(void);
-        std::string putData(void);
+        virtual void getData(void);
+        virtual std::string putData(void);
 };
 
-class Book: Publication, Sales{
+class Book: public Publication, public Sales{
     private:
         int page_counter;
     public:
-        void getData(void);
-        std::string putData(void);
+        void getData (void)override;
+        std::string putData(void)override;
 };
 
-class Tape:Publication, Sales{
+class Tape: public Publication, public Sales{
     private:
         float playing_time;
     public:
-        void getData(void);
-        std::string putData(void);
+        void getData(void)override;
+        std::string putData(void)override;
 };
 
-class Disk: Publication, Sales{
+class Disk: public Publication, public Sales{
     private:
         disk_type type;
     public:
-        void getData(void);
-        std::string putData(void);
+        void getData(void)override;
+        std::string putData(void)override;
 };
 
-class Interface: Book, Tape, Disk{
+class Interface: private Book, private Tape, private Disk{
     private:
         int selection;
     public:

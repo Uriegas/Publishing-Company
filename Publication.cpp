@@ -1,4 +1,6 @@
 #include "Publication.hpp"
+#include <iostream>
+#include <sstream>
 
 void Publication::getData(void){
     std::cout << "Enter the publication title: ";
