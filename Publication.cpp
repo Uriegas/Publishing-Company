@@ -64,29 +64,57 @@ std::string Disk::putData(void){
     return Publication::putData() + Sales::putData() + "Disk Type: " + (type == CD ? "CD" : "DVD") + '\n';
 }
 
+void Interface::viewAll(){
+    for(Book x : books)
+        std::cout << x.putData();
+    for(Tape x : tapes)
+        std::cout << x.putData();
+    for(Disk x : disks)
+        std::cout << x.putData();
+};
+
 void Interface::menu(){
     std::cout << "This a publications sales store (books, tapes and disks)\n";
 
     while (true){
-        std::cout << "1. " << "Add publication" << '\n'
-                  << "2. " << "Add book" << '\n'
-                  << "3. " << "Add Tape" << '\n'
-                  << "4. " << "Add Disk" << '\n'
-                  << "5. " << "Quit" << std::endl;
-
+        std::cout << "1. " << "Add Book" << '\n'
+                  << "2. " << "Add Tape" << '\n'
+                  << "3. " << "Add Disk" << '\n'
+                  << "4. " << "View All" << '\n'
+                  << "5. " << "View Revenue" << '\n'
+                  << "6. " << "Quit" << '\n';
+        std::cin.ignore();
         std::getline(std::cin, buffer);
         std::stringstream(buffer) >> selection;
+        std::cout << selection;
 
         switch (selection){
         case 1:{
-            Publication pb;
-            pb.getData();
+            Book tmp;
+            tmp.getData();
+            books.push_back(tmp);
             break;
         }
         case 2:{
-
+            Tape tmp;
+            tmp.getData();
+            tapes.push_back(tmp);
+            break;
         }
-        case 5:
+        case 3:{
+            Disk tmp;
+            tmp.getData();
+            disks.push_back(tmp);
+            break;
+        }
+        case 4:{
+            viewAll();
+            break;
+        }
+        case 5:{
+            break;
+        }
+        case 6:
             return;
         default:
             break;

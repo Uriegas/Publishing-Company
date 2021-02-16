@@ -54,6 +54,7 @@ class Interface{
         std::vector<Book> books;
         std::vector<Tape> tapes;
         std::vector<Disk> disks;
+        void viewAll();
     public:
         void menu();
 };
