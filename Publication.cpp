@@ -1,11 +1,14 @@
 #include "Publication.hpp"
 
 void Publication::getData(void){
+    std::string tmp;
     std::cout << "Enter the publication title: ";
-    std::cin >> std::ws;
+//    std::cin >> std::ws;
     std::getline(std::cin, title);
     std::cout << "Enter the price: ";
-    std::cin >> price;
+    std::getline(std::cin, tmp);
+    std::stringstream(tmp) >> price;
+//    std::cin >> price;
 }
 
 std::string Publication::putData(void){
@@ -13,9 +16,12 @@ std::string Publication::putData(void){
 }
 
 void Sales::getData(void){
+    std::string tmp;
     for(int i = 0; i < 12; i++){
         std::cout << "Enter " + std::to_string(i+1) + " month sales amount (quantity): ";
-        std::cin >> sales_amount[i];
+        std::getline(std::cin, tmp);
+        std::stringstream(tmp) >> sales_amount[i];
+//        std::cin >> sales_amount[i];
     }
 }
 
@@ -34,10 +40,13 @@ float Sales::getAnnualSales(){
 }
 
 void Book::getData(void){
+    std::string tmp;
     Publication::getData();
     Sales::getData();
     std::cout << "Enter number of pages: ";
-    std::cin >> page_counter;
+    std::getline(std::cin, tmp);
+    std::stringstream(tmp) >> page_counter;
+//    std::cin >> page_counter;
 }
 
 std::string Book::putData(void){
@@ -45,10 +54,12 @@ std::string Book::putData(void){
 }
 
 void Tape::getData(void){
+    std::string tmp;
     Publication::getData();
     Sales::getData();
     std::cout << "Enter the playing time(minutes): ";
-    std::cin >> playing_time;
+    std::stringstream(tmp) >> playing_time;
+//    std::cin >> playing_time;
 }
 
 std::string Tape::putData(void){
@@ -56,15 +67,17 @@ std::string Tape::putData(void){
 }
 
 void Disk::getData(void){
-    char buff;
+//    char buff;
+    std::string buff;
     Publication::getData();
     Sales::getData();
     do{
         std::cout << "Enter the disk type (d = dvd, c = cd):";
-        std::cin >> buff;
+        std::getline(std::cin, buff);
+//        std::cin >> buff;
     }
-    while(!(buff == 'c' || buff == 'd'));
-    type = (disk_type)buff;
+    while(!(buff == "c" || buff == "d"));
+    type = (disk_type)buff[1];
 }
 
 std::string Disk::putData(void){
@@ -85,14 +98,15 @@ void Interface::viewAll(){
 
 void Interface::salesMenu(){
     while(true){
-        std::cout << "1. " << "Anual Book Sales" << '\n'
+        std::cout << "-------Anual Sales-------"
+                  << "1. " << "Anual Book Sales" << '\n'
                   << "2. " << "Anual Tape Sales" << '\n'
                   << "3. " << "Anual Disk Sales" << '\n'
-                  << "4. " << "Quit" << '\n';
-        std::cin.ignore();
+                  << "4. " << "Total Sales" << '\n'
+                  << "5. " << "Quit" << std::endl;
+
         std::getline(std::cin, buffer);
         std::stringstream(buffer) >> selection;
-        std::cout << selection;
 
         switch (selection){
         case 1:{
@@ -116,7 +130,10 @@ void Interface::salesMenu(){
             std::cout << "Anual Disks Sales are: " << sales << '\n';
             break;
         }
-        case 4:
+        case 4:{
+            break;//Not implemented
+        }
+        case 5:
             return;
         default:
             break;
@@ -125,19 +142,17 @@ void Interface::salesMenu(){
 }
 
 void Interface::menu(){
-    std::cout << "This a publications sales store (books, tapes and disks)\n";
-
     while (true){
-        std::cout << "1. " << "Add Book" << '\n'
+        std::cout << "This a publications sales store (books, tapes and disks)\n"
+                  << "1. " << "Add Book" << '\n'
                   << "2. " << "Add Tape" << '\n'
                   << "3. " << "Add Disk" << '\n'
                   << "4. " << "View All" << '\n'
                   << "5. " << "View Revenue" << '\n'
-                  << "6. " << "Quit" << '\n';
-        std::cin.ignore();
+                  << "6. " << "Quit" << std::endl;
+        std::cin.clear();
         std::getline(std::cin, buffer);
         std::stringstream(buffer) >> selection;
-        std::cout << selection;
 
         switch (selection){
         case 1:{
