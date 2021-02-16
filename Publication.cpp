@@ -57,6 +57,7 @@ void Tape::getData(void){
     Publication::getData();
     Sales::getData();
     std::cout << "Enter the playing time(minutes): ";
+    std::getline(std::cin, tmp);
     std::stringstream(tmp) >> playing_time;
 }
 
@@ -104,7 +105,7 @@ void Interface::getAnnualSales(){
 void Interface::salesMenu(){
     getAnnualSales();
     while(true){
-        std::cout << "-------Anual Sales-------"
+        std::cout << "-------Anual Sales-------" << '\n'
                   << "1. " << "Anual Book Sales" << '\n'
                   << "2. " << "Anual Tape Sales" << '\n'
                   << "3. " << "Anual Disk Sales" << '\n'

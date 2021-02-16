@@ -20,6 +20,7 @@ class Sales{
         float total_sales;
         void ComputeSales();
     public:
+        Sales(): total_sales(0){};
         virtual float getAnnualSales();
         virtual void getData(void);
         virtual std::string putData(void);
@@ -57,7 +58,7 @@ class Interface{
         std::vector<Book> books;
         std::vector<Tape> tapes;
         std::vector<Disk> disks;
-        std::vector<int> gross_total_sales;
+        float gross_total_sales [3];
         void viewAll();
         void salesMenu();
         void getAnnualSales();
