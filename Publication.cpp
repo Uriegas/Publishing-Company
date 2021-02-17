@@ -49,7 +49,7 @@ void Book::getData(void){
 }
 
 std::string Book::putData(void){
-    return Publication::putData() + Sales::putData() + "Number of pages: " + std::to_string(page_counter) + '\n';
+    return "\n------------------------------\n" + Publication::putData() + Sales::putData() + "Number of pages: " + std::to_string(page_counter) + '\n';
 }
 
 void Tape::getData(void){
@@ -62,7 +62,7 @@ void Tape::getData(void){
 }
 
 std::string Tape::putData(void){
-    return Publication::putData() + Sales::putData() + "Playing Time (min): " + std::to_string(playing_time) + '\n';
+    return "\n------------------------------\n" + Publication::putData() + Sales::putData() + "Playing Time (min): " + std::to_string(playing_time) + '\n';
 }
 
 void Disk::getData(void){
@@ -78,7 +78,7 @@ void Disk::getData(void){
 }
 
 std::string Disk::putData(void){
-    return Publication::putData() + Sales::putData() + "Disk Type: " + (type == CD ? "CD" : "DVD") + '\n';
+    return "\n------------------------------\n" + Publication::putData() + Sales::putData() + "Disk Type: " + (type == CD ? "CD" : "DVD") + '\n';
 }
 
 void Interface::viewAll(){
