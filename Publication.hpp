@@ -62,7 +62,7 @@ class Interface{
         float gross_total_sales [3];
         void viewAll();
         void salesMenu();
-        void getAnnualSales();
+        void getAnnualSales(int selection);
     public:
         Interface(): gross_total_sales{0,0,0}{};
         void menu();

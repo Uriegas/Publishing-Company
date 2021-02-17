@@ -93,17 +93,21 @@ void Interface::viewAll(){
             std::cout << x.putData();
 }
 
-void Interface::getAnnualSales(){
-    for( Book x : books)
-        gross_total_sales[0] += ( x.getAnnualSales() * x.getPrice() );
-    for( Tape x : tapes)
-        gross_total_sales[1] += ( x.getAnnualSales() * x.getPrice() );
-    for( Disk x : disks)
-        gross_total_sales[2] += ( x.getAnnualSales() * x.getPrice() );
+void Interface::getAnnualSales(int selection){
+    switch(selection){
+    case 1:
+        for( Book x : books)
+            gross_total_sales[0] += ( x.getAnnualSales() * x.getPrice() );
+    case 2:
+        for( Tape x : tapes)
+            gross_total_sales[1] += ( x.getAnnualSales() * x.getPrice() );
+    case 3:
+        for( Disk x : disks)
+            gross_total_sales[2] += ( x.getAnnualSales() * x.getPrice() );
+    }
 }
 
 void Interface::salesMenu(){
-    getAnnualSales();
     while(true){
         std::cout << "-------Anual Sales-------" << '\n'
                   << "1. " << "Anual Book Sales" << '\n'
@@ -132,7 +136,7 @@ void Interface::salesMenu(){
                 break;
             }
             case 4:{
-                float total;
+                float total = 0;
                 for( auto x : gross_total_sales )
                     total += x;
                 std::cout << "Total Store Sales: " << total << "\n\n";
@@ -164,18 +168,21 @@ void Interface::menu(){
                 Book tmp;
                 tmp.getData();
                 books.push_back(tmp);
+                getAnnualSales(selection);
                 break;
             }
             case 2:{
                 Tape tmp;
                 tmp.getData();
                 tapes.push_back(tmp);
+                getAnnualSales(selection);
                 break;
             }
             case 3:{
                 Disk tmp;
                 tmp.getData();
                 disks.push_back(tmp);
+                getAnnualSales(selection);
                 break;
             }
             case 4:
