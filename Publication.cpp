@@ -117,25 +117,25 @@ void Interface::salesMenu(){
 
         switch (selection){
             case 1:{
-                std::cout << "Anual Book Sales are: " << gross_total_sales[0] << '\n\n';
+                std::cout << "Anual Book Sales are: " << gross_total_sales[0] << "\n\n";
                 break;
             }
             case 2:{
                 float sales = 0;
                 for( Sales x : tapes)
                     sales += x.getAnnualSales();
-                std::cout << "Anual Tape Sales are: " << gross_total_sales[1] << '\n\n';
+                std::cout << "Anual Tape Sales are: " << gross_total_sales[1] << "\n\n";
                 break;
             }
             case 3:{
-                std::cout << "Anual Disks Sales are: " << gross_total_sales[2] << '\n\n';
+                std::cout << "Anual Disks Sales are: " << gross_total_sales[2] << "\n\n";
                 break;
             }
             case 4:{
                 float total;
                 for( auto x : gross_total_sales )
                     total += x;
-                std::cout << "Total Store Sales: " << total << '\n\n';
+                std::cout << "Total Store Sales: " << total << "\n\n";
                 break;
             }
             case 5:
